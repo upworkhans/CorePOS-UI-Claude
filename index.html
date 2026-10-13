@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Core POS Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<div class="app">
+  <aside class="side" aria-label="Main navigation">
+    <div class="brandmark">
+      <div class="logo">C·P</div>
+      <div><b>CORE POS</b><span>Back-office admin</span></div>
+    </div>
+    <div class="tenant"><span>Tenant</span><b>Atlas Retail Group</b>3 regions · 14 countries · 3 brands · 205 stores</div>
+    <nav class="nav" id="nav"></nav>
+    <div class="side-foot">Console v2026.10 · API v3<br>Data residency: EU · US · APAC</div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <button class="iconbtn menu-btn" id="menu-btn" aria-label="Open navigation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+      <div class="scope" id="scope" role="group" aria-label="Hierarchy scope"></div>
+      <div class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input id="q" placeholder="Jump to a store, module or setting" aria-label="Search">
+        <kbd>/</kbd>
+      </div>
+      <div class="top-right">
+        <span class="env">PROD</span>
+        <button class="iconbtn" id="theme-btn" aria-label="Toggle dark mode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+        <button class="iconbtn" id="bell" aria-label="Alerts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="dot"></span></button>
+        <div class="avatar" title="Priya Raman · HQ Admin · Global">PR</div>
+      </div>
+    </header>
+    <main class="page" id="page"></main>
+  </div>
+</div>
+<div id="layer"></div>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/screens-org.js"></script>
+<script src="assets/screens-compliance.js"></script>
+<script src="assets/screens-ops.js"></script>
+</body>
+</html>
