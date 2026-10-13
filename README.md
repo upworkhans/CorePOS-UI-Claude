@@ -16,11 +16,12 @@ Open `index.html` in a browser. No build step or server is needed. All data is s
 | **Role × scope access** | A permission is a role (what you can do) plus a scope (where). Approval limits are configurable per role. |
 | **Compliance built into configuration** | Tax engine, fiscalisation, receipts/legal text, number series and privacy rules are configured per country, with previews. |
 
-## Screen inventory (26 screens)
+## Screen inventory (27 screens)
 
 | Area | Screen | Key functionality |
 |---|---|---|
 | Overview | Command center | KPIs (sales, transactions, ATV, stores trading), hourly sales by region, alerts, region vs target, integration health, offline/sync queue |
+| | Transactions | Immutable journal of sales, returns, exchanges, post-voids and endless-aisle orders. Filters: region, country, brand, store (synced with the scope bar), business day, type, status, tender, channel, USD amount range, manual discount, manager approval, free-text search; saved views; sortable, paged table with totals. Detail drawer: lines, discounts, tax, tenders and PSP ref, masked customer with logged reveal, fiscal signature, downstream postings (tax, SAP, Fluent, Amperity), reprint/email, referenced refund, retry failed posting |
 | Organisation | Hierarchy | Region → Country → Brand → Store tree, node details, add nodes, set as working scope |
 | | Stores | Store list with status, business day, sales, sync; store drawer: profile, devices, payments & fiscal, overrides, opening hours |
 | | Configuration | Searchable config keys, inheritance cascade, locks, override at current scope, approval, change history |
@@ -57,5 +58,6 @@ assets/app.js                 router, scope model, drawers/modals/toasts, helper
 assets/screens-org.js         command center, organisation, catalogue & pricing
 assets/screens-compliance.js  tax, fiscal, receipts, localisation, payments, customers, privacy
 assets/screens-ops.js         operations, integrations, finance & reports, access & security
+assets/screens-transactions.js transactions journal and detail drawer
 tools/build.py                single-file bundle → dist/core-pos-admin.html
 ```

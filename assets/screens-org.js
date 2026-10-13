@@ -55,7 +55,7 @@
           <div class="num strong">${['$812k', '$1.21M', '$0.46M'][i]}</div></div>`;
       }).join('');
       return `
-      ${CP.pageHead({ crumbs: ['Overview'], title: 'Command center', desc: 'Live trading, store health and integration status across every region you can see. Change the scope in the top bar to drill from global down to a single store.', actions: `<button class="btn" data-toast="Dashboard exported to Excel">${I('download')}Export</button><button class="btn primary" data-go="reports">${I('chart')}Open reports</button>` })}
+      ${CP.pageHead({ crumbs: ['Overview'], title: 'Command center', desc: 'Live trading, store health and integration status across every region you can see. Change the scope in the top bar to drill from global down to a single store.', actions: `<button class="btn" data-toast="Dashboard exported to Excel">${I('download')}Export</button><button class="btn" data-go="transactions">${I('receipt')}Transactions</button><button class="btn primary" data-go="reports">${I('chart')}Open reports</button>` })}
       <div class="grid g4">
         ${kpi('Net sales today', fmtUSD(sales), '<span class="up">▲ 6.4%</span> vs same day last year', [40, 42, 39, 47, 51, 49, 55, 58], 'var(--accent)')}
         ${kpi('Transactions', txn.toLocaleString('en-US'), '<span class="up">▲ 3.1%</span> · UPT 1.42', [30, 31, 35, 33, 36, 38, 37, 41], 'var(--accent)')}
@@ -263,10 +263,11 @@
           ${['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((d, i) => `<div class="row"><b style="width:44px">${d}</b><input class="input mono" style="width:90px" value="${i === 6 ? '12:00' : '10:00'}" aria-label="${d} open"> – <input class="input mono" style="width:90px" value="${i === 6 ? '18:00' : '20:00'}" aria-label="${d} close">${CP.switch('h' + i, true, d + ' open')}</div>`).join('')}
           <div class="field"><label for="sd-autoclose">Auto Z-close if not closed by</label><input class="input mono" id="sd-autoclose" value="03:00 local" style="width:160px"></div></div>
       </div>`,
-      foot: `${isNew ? '' : '<button class="btn danger" id="sd-deact">Deactivate store</button><span class="spacer"></span>'}<button class="btn" data-close>Cancel</button><button class="btn primary" id="sd-save">${isNew ? 'Create store' : 'Save changes'}</button>`,
+      foot: `${isNew ? '' : '<button class="btn danger" id="sd-deact">Deactivate store</button><button class="btn" id="sd-tx">View transactions</button><span class="spacer"></span>'}<button class="btn" data-close>Cancel</button><button class="btn primary" id="sd-save">${isNew ? 'Create store' : 'Save changes'}</button>`,
       mount(d) {
         d.querySelectorAll('[data-close]').forEach((x) => (x.onclick = CP.closeOverlay));
         d.querySelector('#sd-save').onclick = () => { CP.closeOverlay(); CP.toast(isNew ? 'Store created as draft. Finish setup in Store rollout.' : 'Store saved. Devices pick up changes at next sync.'); };
+        d.querySelector('#sd-tx')?.addEventListener('click', () => { CP.setScope({ region: CP.country(s.country).region, country: s.country, brand: s.brand, store: s.code }); location.hash = 'transactions'; });
         const de = d.querySelector('#sd-deact');
         if (de) de.onclick = () => CP.confirm({ title: `Deactivate ${s.code}?`, body: 'Devices are signed out and the store stops trading. Fiscal journals and transaction history are kept for the legal retention period.', confirm: 'Deactivate', danger: true, onConfirm: () => CP.toast(s.code + ' deactivated') });
       },

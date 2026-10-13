@@ -227,7 +227,7 @@ window.CP = window.CP || {};
   /* ---------- Navigation + router ---------- */
   CP.screens = CP.screens || {};
   const NAV = [
-    ['Overview', [['dashboard', 'Command center', 'dashboard']]],
+    ['Overview', [['dashboard', 'Command center', 'dashboard'], ['transactions', 'Transactions', 'receipt']]],
     ['Organisation', [['hierarchy', 'Hierarchy', 'tree'], ['stores', 'Stores', 'store'], ['config', 'Configuration', 'sliders'], ['rollout', 'Store rollout', 'rocket']]],
     ['Catalogue & pricing', [['products', 'Products', 'box'], ['pricing', 'Price lists', 'tag'], ['promotions', 'Promotions', 'percent']]],
     ['Tax & compliance', [['tax', 'Tax engine', 'landmark'], ['fiscal', 'Fiscalisation', 'shield'], ['receipts', 'Receipts & documents', 'receipt'], ['localization', 'Localisation', 'globe']]],
